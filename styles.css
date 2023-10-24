@@ -88,3 +88,17 @@ p {
     margin-top: 10px;
     line-height: 1.5;
 }
+/* Style additional content */
+.content {
+    padding: 20px;
+    background-color: #111; /* Add a darker background color */
+    max-width: 800px;
+    margin: 0 auto;
+    transition: transform 0.3s; /* Add a transition for smoother size change */
+}
+
+/* Increase the scale of the content on hover */
+.content:hover {
+    transform: scale(1.05); /* You can adjust the scale factor as needed */
+}
+
