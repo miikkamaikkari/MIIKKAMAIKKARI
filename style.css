@@ -36,7 +36,7 @@ h1.logo {
     justify-content: flex-end;
 }
 
-.animated-button {
+button {
     background-color: #333;
     color: #fff;
     border: none;
@@ -47,7 +47,7 @@ h1.logo {
     animation: buttonFadeIn 2s ease;
 }
 
-.animated-button:hover {
+button:hover {
     background-color: #555;
     animation: buttonHover 0.5s ease infinite;
 }
