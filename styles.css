@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
     animation: fadeIn 1s ease;
+    overflow: hidden;
 }
 
 @keyframes fadeIn {
@@ -18,22 +19,27 @@ body {
 
 .container {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
-    align-items: center;
     padding: 20px;
+    height: 100vh;
+    overflow-y: scroll;
+    position: relative;
 }
 
 h1.logo {
     font-size: 36px;
     font-weight: bold;
     margin: 0;
-    animation: slideInLeft 2s ease;
+    animation: slideInRight 2s ease;
 }
 
 .buttons {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
+    margin-top: 20px;
 }
 
 button {
@@ -61,17 +67,6 @@ button:hover {
 
 h2, p {
     color: #fff;
-}
-
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
 }
 
 @keyframes slideInRight {
