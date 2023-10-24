@@ -49,12 +49,12 @@ header {
     justify-content: center;
     align-items: center;
     height: 50vh; /* Center vertically in the viewport */
-    background-color: #333; /* Add a background color */
+    background-color: #fff; /* Add a background color */
 }
 
 .coming-soon {
     font-size: 36px;
-    animation: bounce 2s infinite; /* Example animation */
+    animation: bounce 5s infinite; /* Example animation */
 }
 
 /* Example animation: Bounce */
