@@ -1,0 +1,14 @@
+header {
+    text-align: left;
+    padding: 20px;
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
