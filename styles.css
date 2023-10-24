@@ -49,7 +49,7 @@ header {
     justify-content: center;
     align-items: center;
     height: 50vh; /* Center vertically in the viewport */
-    background-color: #fff; /* Add a background color */
+    background-color: black; /* Add a background color */
 }
 
 .coming-soon {
