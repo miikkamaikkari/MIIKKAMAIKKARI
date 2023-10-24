@@ -38,5 +38,15 @@
             <p>Phone: xxxxxxx</p>
         </div>
     </main>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".fade-in");
+        elements.forEach((element, index) => {
+            element.style.transitionDelay = `${index * 0.3}s`;
+            element.classList.add("fadeInAnimation");
+        });
+    });
+</script>
+
 </body>
 </html>
