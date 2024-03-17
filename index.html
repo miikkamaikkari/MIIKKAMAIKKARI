@@ -6,15 +6,12 @@
 <title>MiikkaMaikkari</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    color: #333;
-    background-color: #fff;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+  /* Smooth background color transition */
+  body {
+    transition: background-color 1s ease-in-out;
   }
+
+  /* Navigation styles */
   nav {
     position: fixed;
     width: 100%;
@@ -22,6 +19,10 @@
     padding: 10px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 1000;
+    transition: background-color 0.5s; /* Smooth transition for navbar background */
+  }
+  nav:hover {
+    background: #f8f8f8; /* Slight change on hover */
   }
   nav ul {
     list-style: none;
@@ -37,26 +38,37 @@
     text-decoration: none;
     color: #333;
     font-weight: 700;
+    transition: color 0.3s; /* Smooth color transition on hover */
   }
+  nav ul li a:hover {
+    color: #000; /* Darker color on hover */
+  }
+
+  /* Hero section styles */
   .hero {
     height: 100vh;
-    background: #000;
+    background: linear-gradient(to bottom, #000 0%, #333 100%);
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
+    transition: background-color 1s ease-in-out; /* Smooth background transition */
   }
   .hero h1 {
     font-size: 3em;
     margin: 0;
     font-weight: 700;
+    transition: transform 0.3s, opacity 0.3s; /* Animation on scroll */
   }
   .hero p {
     font-size: 1.5em;
     margin-top: 20px;
+    transition: transform 0.3s, opacity 0.3s; /* Animation on scroll */
   }
+
+  /* Section styles */
   .section {
     height: 100vh;
     display: flex;
@@ -64,6 +76,7 @@
     align-items: center;
     text-align: center;
     flex-direction: column;
+    transition: background-color 1s ease-in-out; /* Smooth background transition */
   }
   .section:nth-child(even) {
     background: #f5f5f7;
@@ -75,10 +88,22 @@
     font-size: 2.5em;
     margin: 0;
     font-weight: 700;
+    transition: transform 0.3s, opacity 0.3s; /* Animation on scroll */
   }
   .section p {
     font-size: 1.2em;
     margin-top: 20px;
+    transition: transform 0.3s, opacity 0.3s; /* Animation on scroll */
+  }
+
+  /* Scroll animations */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
 </head>
@@ -93,25 +118,45 @@
   </ul>
 </nav>
 
-<div id="hero" class="hero">
+<div id="hero" class="hero animate-on-scroll">
   <h1>MIIKKAMAIKKARI</h1>
   <p>Innovative Solutions for Modern Business</p>
 </div>
 
-<div id="services" class="section">
+<div id="services" class="section animate-on-scroll">
   <h2>Our Services</h2>
   <p>We provide a wide range of services to help your business grow.</p>
 </div>
 
-<div id="about" class="section">
+<div id="about" class="section animate-on-scroll">
   <h2>About Us</h2>
   <p>Learn more about our company and our commitment to excellence.</p>
 </div>
 
-<div id="contact" class="section">
+<div id="contact" class="section animate-on-scroll">
   <h2>Contact Us</h2>
   <p>Get in touch with us to start your project today.</p>
 </div>
+
+<script>
+  // Listen for scroll events
+  window.addEventListener('scroll', function() {
+    // Select all elements with the 'animate-on-scroll' class
+    var elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach(function(el) {
+      var distanceToTop = el.getBoundingClientRect().top;
+      var windowHeight = window.innerHeight;
+      // Check if element is in view
+      if (distanceToTop < windowHeight - 100) {
+        // Add the 'visible' class
+        el.classList.add('visible');
+      } else {
+        // Remove the 'visible' class
+        el.classList.remove('visible');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
