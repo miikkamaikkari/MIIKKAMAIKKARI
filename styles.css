@@ -58,7 +58,7 @@ header {
     animation: pulse 3s infinite; /* Example animation */
 }
 /* Example animation: Bounce */
-@keyframes bounce {
+@keyframes flash {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
     }
