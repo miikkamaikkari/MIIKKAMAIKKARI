@@ -1,161 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MiikkaMaikkari</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  /* Smooth background color transition */
-  body {
-    transition: background-color 1s ease-in-out;
-  }
-
-  /* Navigation styles */
-  nav {
-    position: fixed;
-    width: 100%;
-    background: #fff;
-    padding: 10px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-    transition: background-color 0.5s; /* Smooth transition for navbar background */
-  }
-  nav:hover {
-    background: #f8f8f8; /* Slight change on hover */
-  }
-  nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-  }
-  nav ul li {
-    padding: 0 20px;
-  }
-  nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 700;
-    transition: color 0.3s; /* Smooth color transition on hover */
-  }
-  nav ul li a:hover {
-    color: #000; /* Darker color on hover */
-  }
-
-  /* Hero section styles */
-  .hero {
-    height: 100vh;
-    background: linear-gradient(to bottom, #000 0%, #333 100%);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-    transition: background-color 1s ease-in-out; /* Smooth background transition */
-  }
-  .hero h1 {
-    font-size: 3em;
-    margin: 0;
-    font-weight: 700;
-    transition: transform 0.3s, opacity 0.3s; /* Animation on scroll */
-  }
-  .hero p {
-    font-size: 1.5em;
-    margin-top: 20px;
-    transition: transform 0.3s, opacity 0.3s; /* Animation on scroll */
-  }
-
-  /* Section styles */
-  .section {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-    transition: background-color 1s ease-in-out; /* Smooth background transition */
-  }
-  .section:nth-child(even) {
-    background: #f5f5f7;
-  }
-  .section:nth-child(odd) {
-    background: #fff;
-  }
-  .section h2 {
-    font-size: 2.5em;
-    margin: 0;
-    font-weight: 700;
-    transition: transform 0.3s, opacity 0.3s; /* Animation on scroll */
-  }
-  .section p {
-    font-size: 1.2em;
-    margin-top: 20px;
-    transition: transform 0.3s, opacity 0.3s; /* Animation on scroll */
-  }
-
-  /* Scroll animations */
-  .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  .animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIIKKAMAIKKARI</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<header>
+    <h1 class="title">MIIKKAMAIKKARI</h1>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="#information">Information</a></li>
+            <li class="dropdown">
+                <a href="#" class="contact-button">Contact me</a>
+                <div class="dropdown-content">
+                    <a href="mailto:info@miikkamaikkari.com">Email</a>
+                    <a href="https://www.instagram.com/miikkakoponen" target="_blank">Instagram</a>
+                </div>
+            </li>
+            <li><a href="#youtube">Youtube</a></li>
+        </ul>
+    </nav>
+</header>
+    <main>
+        <div class="center-text">
+            <h2 class="coming-soon">COMING SOON</h2>
+        </div>
 
-<nav>
-  <ul>
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<div id="hero" class="hero animate-on-scroll">
-  <h1>MIIKKAMAIKKARI</h1>
-  <p>Innovative Solutions for Modern Business</p>
-</div>
-
-<div id="services" class="section animate-on-scroll">
-  <h2>Our Services</h2>
-  <p>We provide a wide range of services to help your business grow.</p>
-</div>
-
-<div id="about" class="section animate-on-scroll">
-  <h2>About Us</h2>
-  <p>Learn more about our company and our commitment to excellence.</p>
-</div>
-
-<div id="contact" class="section animate-on-scroll">
-  <h2>Contact Us</h2>
-  <p>Get in touch with us to start your project today.</p>
-</div>
-
-<script>
-  // Listen for scroll events
-  window.addEventListener('scroll', function() {
-    // Select all elements with the 'animate-on-scroll' class
-    var elements = document.querySelectorAll('.animate-on-scroll');
-    elements.forEach(function(el) {
-      var distanceToTop = el.getBoundingClientRect().top;
-      var windowHeight = window.innerHeight;
-      // Check if element is in view
-      if (distanceToTop < windowHeight - 100) {
-        // Add the 'visible' class
-        el.classList.add('visible');
-      } else {
-        // Remove the 'visible' class
-        el.classList.remove('visible');
-      }
+      </p>
+        </div>
+    </main>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".fade-in");
+        elements.forEach((element, index) => {
+            element.style.transitionDelay = `${index * 0.3}s`;
+            element.classList.add("fadeInAnimation");
+        });
     });
-  });
 </script>
 
 </body>
