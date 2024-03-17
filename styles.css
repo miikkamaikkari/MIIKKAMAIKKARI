@@ -54,8 +54,8 @@ header {
 }
 
 .coming-soon {
-    font-size: 46px;
-    animation: bounce 3s infinite; /* Example animation */
+    font-size: 62px;
+    animation: pulse 3s infinite; /* Example animation */
 }
 /* Example animation: Bounce */
 @keyframes bounce {
