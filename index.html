@@ -20,20 +20,14 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            perspective: 2000px;
             overflow-x: hidden;
+            padding-top: 5vh; /* Added top padding */
         }
         .container {
             text-align: center;
             width: 100%;
             max-width: 600px;
             padding: 20px;
-            transform-style: preserve-3d;
-            transform: rotateX(5deg);
-            transition: all 0.5s ease;
-        }
-        .container:hover {
-            transform: rotateX(0deg) rotateY(2deg);
         }
         .name {
             font-size: 6rem;
@@ -42,12 +36,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 2rem;
-            transform: translateZ(80px);
-            transition: all 0.3s ease;
-            line-height: 1;
-        }
-        .name:hover {
-            transform: scale(1.05) rotateY(15deg);
+            transition: transform 0.2s ease;
+            transform-style: preserve-3d;
         }
         .video-wrapper {
             background: rgba(255, 255, 255, 0.05);
@@ -55,12 +45,11 @@
             border-radius: 15px;
             padding: 15px;
             margin-bottom: 2rem;
-            transition: all 0.4s ease;
-            transform-style: preserve-3d;
+            transition: all 0.3s ease;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
         .video-wrapper:hover {
-            transform: translateZ(30px) rotateX(3deg);
+            transform: translateZ(20px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.7);
         }
         .video-container {
@@ -86,39 +75,24 @@
             border-radius: 50px;
             font-weight: 700;
             transition: all 0.3s ease;
-            transform: translateZ(40px);
         }
         .linkedin-btn:hover {
-            transform: scale(1.1) rotateY(-10deg);
+            transform: scale(1.1);
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-        .glass-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background: radial-gradient(
-                circle at center, 
-                rgba(255,255,255,0.05) 0%, 
-                rgba(0,0,0,0.2) 100%
-            );
-            z-index: 10;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="name">
-            MIIKKAMAIKKARI
+    <div class="container" id="container">
+        <div class="name" id="name">
+            MIIKKA MAIKKARI
         </div>
         
         <div class="video-wrapper">
             <h2 class="text-xl mb-4">Latest YouTube Video</h2>
             <div class="video-container">
                 <iframe 
-                    src="https://www.youtube.com/embed/latest" 
+                    src="https://www.youtube.com/watch?v=NXFo-uX4euA&t=5s" 
                     title="Latest YouTube Video" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -136,17 +110,39 @@
         </a>
     </div>
 
-    <div class="glass-overlay"></div>
-
     <script>
-        // Subtle depth and movement effects
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            
-            // Subtle 3D tilt effect
-            document.querySelector('.container').style.transform = 
-                `rotateX(${5 - mouseY * 10}deg) rotateY(${mouseX * 10 - 5}deg)`;
+        const name = document.getElementById('name');
+        let rafId = null;
+
+        function handleMouseMove(e) {
+            // Cancel any existing animation frame
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+            }
+
+            // Use requestAnimationFrame for smoother performance
+            rafId = requestAnimationFrame(() => {
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+                
+                // Subtle 3D tilt for the name
+                const tiltX = (mouseY - 0.5) * 15;
+                const tiltY = (mouseX - 0.5) * 15;
+                
+                name.style.transform = `
+                    perspective(1000px)
+                    rotateX(${-tiltX}deg)
+                    rotateY(${tiltY}deg)
+                `;
+            });
+        }
+
+        // Attach event listener
+        window.addEventListener('mousemove', handleMouseMove);
+
+        // Remove event listener when navigating away
+        window.addEventListener('beforeunload', () => {
+            window.removeEventListener('mousemove', handleMouseMove);
         });
     </script>
 </body>
