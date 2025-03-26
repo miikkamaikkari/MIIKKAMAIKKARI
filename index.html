@@ -30,7 +30,7 @@
             padding: 20px;
         }
         .name {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 700;
             background: linear-gradient(45deg, #00fffc, #5533ff);
             -webkit-background-clip: text;
@@ -38,15 +38,20 @@
             margin-bottom: 2rem;
             transition: transform 0.2s ease;
             transform-style: preserve-3d;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         .video-wrapper {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 2rem;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 1.5rem;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .video-container {
             position: relative;
