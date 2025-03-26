@@ -13,24 +13,24 @@
             box-sizing: border-box;
         }
         body {
-            background: #000000;
-            color: #ffffff;
+            background: #000;
+            color: #fff;
             font-family: 'Space Grotesk', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
-            padding-top: 5vh; /* Added top padding */
+            padding: 5vh 5vw; 
+            text-align: center;
         }
         .container {
-            text-align: center;
             width: 100%;
             max-width: 600px;
             padding: 20px;
         }
         .name {
-            font-size: 6rem;
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 700;
             background: linear-gradient(45deg, #00fffc, #5533ff);
             -webkit-background-clip: text;
@@ -48,21 +48,14 @@
             transition: all 0.3s ease;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
-        .video-wrapper:hover {
-            transform: translateZ(20px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-        }
         .video-container {
             position: relative;
-            padding-bottom: 45%;
-            height: 0;
+            width: 100%;
+            aspect-ratio: 16 / 9;
             overflow: hidden;
             border-radius: 10px;
         }
         .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
         }
@@ -75,6 +68,7 @@
             border-radius: 50px;
             font-weight: 700;
             transition: all 0.3s ease;
+            font-size: 1rem;
         }
         .linkedin-btn:hover {
             transform: scale(1.1);
@@ -91,7 +85,7 @@
         <div class="video-wrapper">
             <h2 class="text-xl mb-4">Latest YouTube Video</h2>
             <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/NXFo-uX4euA?si=wmHLJ_VRj1sr6nAX&amp;start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/NXFo-uX4euA?si=wmHLJ_VRj1sr6nAX&amp;start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
         
@@ -109,17 +103,12 @@
         let rafId = null;
 
         function handleMouseMove(e) {
-            // Cancel any existing animation frame
-            if (rafId) {
-                cancelAnimationFrame(rafId);
-            }
+            if (rafId) cancelAnimationFrame(rafId);
 
-            // Use requestAnimationFrame for smoother performance
             rafId = requestAnimationFrame(() => {
                 const mouseX = e.clientX / window.innerWidth;
                 const mouseY = e.clientY / window.innerHeight;
                 
-                // Subtle 3D tilt for the name
                 const tiltX = (mouseY - 0.5) * 15;
                 const tiltY = (mouseX - 0.5) * 15;
                 
@@ -131,10 +120,7 @@
             });
         }
 
-        // Attach event listener
         window.addEventListener('mousemove', handleMouseMove);
-
-        // Remove event listener when navigating away
         window.addEventListener('beforeunload', () => {
             window.removeEventListener('mousemove', handleMouseMove);
         });
