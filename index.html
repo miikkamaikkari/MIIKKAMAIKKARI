@@ -4,43 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIIKKAMAIKKARI</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #121212, #1a1a2e);
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            perspective: 1000px;
+            overflow-x: hidden;
+        }
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 700px;
+            padding: 20px;
+        }
+        .name {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00fffc, #5533ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            transform: translateZ(50px);
+            transition: all 0.3s ease;
+        }
+        .name:hover {
+            transform: scale(1.05) rotateY(10deg);
+        }
+        .video-wrapper {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        .video-wrapper:hover {
+            transform: translateZ(20px) rotateX(5deg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .linkedin-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #0077B5, #00A0DC);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            transform: translateZ(30px);
+        }
+        .linkedin-btn:hover {
+            transform: scale(1.1) rotateY(-10deg);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-element {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
 </head>
 <body>
-<header>
-    <h1 class="title">MIIKKAMAIKKARI</h1>
-    <nav>
-        <ul class="nav-list">
-            <li><a href="#information">Information</a></li>
-            <li class="dropdown">
-                <a href="#" class="contact-button">Contact me</a>
-                <div class="dropdown-content">
-                    <a href="mailto:info@miikkamaikkari.com">Email</a>
-                    <a href="https://www.instagram.com/miikkakoponen" target="_blank">Instagram</a>
-                </div>
-            </li>
-            <li><a href="#youtube">Youtube</a></li>
-        </ul>
-    </nav>
-</header>
-    <main>
-        <div class="center-text">
-            <h2 class="coming-soon">MIIKKAMAIKKARI</h2>
+    <div class="container">
+        <div class="name floating-element">
+            MIIKKAMAIKKAri
         </div>
-   <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-<div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="miikkakoponen" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://fi.linkedin.com/in/miikkakoponen?trk=profile-badge">Miikka Koponen</a></div>
-           
-      </p>
+        
+        <div class="video-wrapper">
+            <h2 class="text-xl mb-4">Latest YouTube Video</h2>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/latest" 
+                    title="Latest YouTube Video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                ></iframe>
+            </div>
         </div>
-    </main>
+        
+        <a 
+            href="https://www.linkedin.com/in/miikkamaikkari" 
+            target="_blank" 
+            class="linkedin-btn"
+        >
+            Connect on LinkedIn
+        </a>
+    </div>
+
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const elements = document.querySelectorAll(".fade-in");
-        elements.forEach((element, index) => {
-            element.style.transitionDelay = `${index * 0.3}s`;
-            element.classList.add("fadeInAnimation");
+        // Interactive background effect
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            document.body.style.background = `linear-gradient(135deg, 
+                hsl(240, 50%, ${10 + mouseY * 10}%), 
+                hsl(240, 50%, ${15 + mouseX * 10}%))`;
         });
-    });
-</script>   
+    </script>
 </body>
 </html>
