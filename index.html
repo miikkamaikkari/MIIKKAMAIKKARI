@@ -38,7 +38,8 @@
             margin-bottom: 2rem;
             transition: transform 0.2s ease;
             transform-style: preserve-3d;
-            white-space: nowrap;
+            white-space: normal; /* Prevent cutting off text */
+            word-wrap: break-word; /* Ensure wrapping works */
         }
         .video-wrapper {
             background: rgba(255, 255, 255, 0.05);
