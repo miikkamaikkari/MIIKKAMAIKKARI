@@ -90,16 +90,17 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .social-buttons {
+       .social-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    gap: 15px;
     margin-top: 20px;
 }
 
-.instagram-btn, .youtube-btn {
+.social-btn {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 12px 20px;
+    background: #333;
     color: white;
     text-decoration: none;
     border-radius: 50px;
@@ -107,6 +108,12 @@
     transition: all 0.3s ease;
     font-size: 1rem;
     text-align: center;
+    min-width: 120px;
+    text-align: center;
+}
+
+.linkedin-btn {
+    background: linear-gradient(45deg, #0077B5, #00A0DC);
 }
 
 .instagram-btn {
@@ -117,10 +124,11 @@
     background: linear-gradient(45deg, #ff0000, #cc0000);
 }
 
-.instagram-btn:hover, .youtube-btn:hover {
+.social-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
+
 
     </style>
 </head>
@@ -137,29 +145,18 @@
             </div>
         </div>
         
-        <div class="social-buttons">
-    <a 
-        href="https://www.linkedin.com/in/miikkakoponen" 
-        target="_blank" 
-        class="linkedin-btn animated-section"
-    >
-        Connect on LinkedIn
+<div class="social-buttons">
+    <a href="https://www.linkedin.com/in/miikkakoponen" target="_blank" class="social-btn linkedin-btn">
+        LinkedIn
     </a>
-    <a 
-        href="https://www.instagram.com/YOUR_INSTAGRAM" 
-        target="_blank" 
-        class="instagram-btn animated-section"
-    >
-        Follow on Instagram
+    <a href="https://www.instagram.com/YOUR_INSTAGRAM" target="_blank" class="social-btn instagram-btn">
+        Instagram
     </a>
-    <a 
-        href="https://www.youtube.com/YOUR_YOUTUBE" 
-        target="_blank" 
-        class="youtube-btn animated-section"
-    >
-        Subscribe on YouTube
+    <a href="https://www.youtube.com/YOUR_YOUTUBE" target="_blank" class="social-btn youtube-btn">
+        YouTube
     </a>
 </div>
+
 
     </div>
 
